@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        function Usuario(nombre, apellido, libros, mascotas){
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.libros = libros;
+            this.mascotas = mascotas;
+
+
+            Usuario.prototype.getFullName = function() {
+                console.log(`Nombre completo: ${nombre} ${apellido}`)
+            }
+
+            Usuario.prototype.addMascota = function(mascota){
+                mascotas.push(mascota);
+            };
+
+            Usuario.prototype.getMascotas = function(){
+                return `El usuario ${nombre} tiene: ${mascotas.length} mascotas`
+            }
+
+            Usuario.prototype.addBook = function(book, autor){
+                let nuevoLibro = {
+                    Nombre: book,
+                    Autor: autor
+                }
+                libros.push(nuevoLibro);
+            }
+
+            Usuario.prototype.getBooks = function(){
+                let nombreLibros = [];
+                for (let i = 0; i < libros.length; i++) {
+                    nombreLibros.push(libros[i].Nombre)
+                }
+                return nombreLibros;
+            }
+        }
+
+        var Bruno = new Usuario('Bruno', 'Tomasso', [], [])
+
+        Bruno.getFullName();
+        Bruno.addMascota('Perro');
+        Bruno.addMascota('Gato');
+        console.log(Bruno.getMascotas());
+        Bruno.addBook('Harry Potter', 'JK Rowling');
+        Bruno.addBook('Señor del inframundo', 'Luis Patota');
+        Bruno.addBook('Divergente', 'Alguien');
+        console.log(Bruno.getBooks());
+
+
+    </script>
+</body>
+</html>

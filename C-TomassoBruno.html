@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        class Usuario {
+            constructor (nombre, apellido, libros, mascotas) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.libros = libros;
+                this.mascotas = mascotas;
+            }
+
+            getFullName(){
+               console.log(`${this.nombre}`)
+            }
+
+            addMascota(mascota){
+                this.mascotas.push(mascota);
+            };
+
+            getMascotas(){
+                return `El usuario ${this.nombre} tiene: ${this.mascotas.length} mascotas`
+            }
+
+            addBook(book, autor){
+                let nuevoLibro = {
+                    Nombre: book,
+                    Autor: autor
+                }
+                this.libros.push(nuevoLibro);
+            }
+
+            getBooks(){
+                let nombreLibros = [];
+                for (let i = 0; i < this.libros.length; i++) {
+                    nombreLibros.push(this.libros[i].Nombre)
+                }
+                return nombreLibros;
+            }
+        }
+
+        let Bruno = new Usuario('Bruno', 'Tomasso', [], []);
+
+        Bruno.getFullName();
+        Bruno.addMascota('Perro');
+        Bruno.addMascota('Gato');
+        console.log(Bruno.getMascotas());
+        Bruno.addBook('Harry Potter', 'JK Rowling');
+        Bruno.addBook('Señor del inframundo', 'Luis Patota');
+        Bruno.addBook('Divergente', 'Alguien');
+        console.log(Bruno.getBooks());
+
+
+    </script>
+</body>
+</html>
